@@ -64,6 +64,8 @@ namespace WindowsFormsApp1
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            rezultatiListView.Items.Clear();
+
             string raziskovalecString;
             string raziskovalecSearch = null;
             
@@ -176,16 +178,27 @@ namespace WindowsFormsApp1
             fakulteteListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.None);
 
             rezultatiListView.View = View.Details;
+            rezultatiListView.FullRowSelect = true;
             rezultatiListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.None);
             stRezultatovCBox.SelectedIndex = 0;
 
 
         }
 
-  
+
+        private void rezultatiListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                string ID = rezultatiListView.SelectedItems[0].Text;
+
+                Form2 prikazGradivForm = new Form2(ID);
+                
+                prikazGradivForm.Show();
 
 
+            }
 
-
+        }
     }
 }

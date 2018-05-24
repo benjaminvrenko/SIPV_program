@@ -110,7 +110,7 @@
             this.fakulteteGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.fakulteteGroupBox.Location = new System.Drawing.Point(0, 0);
             this.fakulteteGroupBox.Name = "fakulteteGroupBox";
-            this.fakulteteGroupBox.Size = new System.Drawing.Size(390, 583);
+            this.fakulteteGroupBox.Size = new System.Drawing.Size(386, 583);
             this.fakulteteGroupBox.TabIndex = 5;
             this.fakulteteGroupBox.TabStop = false;
             this.fakulteteGroupBox.Text = "Seznam fakultet";
@@ -122,7 +122,7 @@
             this.fakulteteListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fakulteteListView.Location = new System.Drawing.Point(3, 19);
             this.fakulteteListView.Name = "fakulteteListView";
-            this.fakulteteListView.Size = new System.Drawing.Size(384, 561);
+            this.fakulteteListView.Size = new System.Drawing.Size(380, 561);
             this.fakulteteListView.TabIndex = 0;
             this.fakulteteListView.UseCompatibleStateImageBehavior = false;
             // 
@@ -142,7 +142,7 @@
             this.iskanjeGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.iskanjeGroupBox.Location = new System.Drawing.Point(0, 0);
             this.iskanjeGroupBox.Name = "iskanjeGroupBox";
-            this.iskanjeGroupBox.Size = new System.Drawing.Size(247, 583);
+            this.iskanjeGroupBox.Size = new System.Drawing.Size(260, 583);
             this.iskanjeGroupBox.TabIndex = 4;
             this.iskanjeGroupBox.TabStop = false;
             this.iskanjeGroupBox.Text = "Iskanje";
@@ -176,7 +176,7 @@
             "50",
             "75",
             "100"});
-            this.stRezultatovCBox.Location = new System.Drawing.Point(174, 84);
+            this.stRezultatovCBox.Location = new System.Drawing.Point(182, 84);
             this.stRezultatovCBox.Name = "stRezultatovCBox";
             this.stRezultatovCBox.Size = new System.Drawing.Size(59, 24);
             this.stRezultatovCBox.TabIndex = 27;
@@ -185,7 +185,7 @@
             // 
             this.raziskovalciBox.Location = new System.Drawing.Point(15, 48);
             this.raziskovalciBox.Name = "raziskovalciBox";
-            this.raziskovalciBox.Size = new System.Drawing.Size(218, 23);
+            this.raziskovalciBox.Size = new System.Drawing.Size(226, 23);
             this.raziskovalciBox.TabIndex = 16;
             // 
             // label5
@@ -193,9 +193,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 87);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(156, 17);
+            this.label5.Size = new System.Drawing.Size(164, 17);
             this.label5.TabIndex = 28;
-            this.label5.Text = "Št. rezultatov za prikaz:";
+            this.label5.Text = "Št. prikazanih rezultatov:";
             // 
             // rezultatiGroupBox
             // 
@@ -204,7 +204,7 @@
             this.rezultatiGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.rezultatiGroupBox.Location = new System.Drawing.Point(0, 0);
             this.rezultatiGroupBox.Name = "rezultatiGroupBox";
-            this.rezultatiGroupBox.Size = new System.Drawing.Size(634, 583);
+            this.rezultatiGroupBox.Size = new System.Drawing.Size(625, 583);
             this.rezultatiGroupBox.TabIndex = 3;
             this.rezultatiGroupBox.TabStop = false;
             this.rezultatiGroupBox.Text = "Rezultati";
@@ -223,9 +223,10 @@
             this.rezultatiListView.GridLines = true;
             this.rezultatiListView.Location = new System.Drawing.Point(3, 19);
             this.rezultatiListView.Name = "rezultatiListView";
-            this.rezultatiListView.Size = new System.Drawing.Size(628, 561);
+            this.rezultatiListView.Size = new System.Drawing.Size(619, 561);
             this.rezultatiListView.TabIndex = 0;
             this.rezultatiListView.UseCompatibleStateImageBehavior = false;
+            this.rezultatiListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.rezultatiListView_ItemSelectionChanged);
             // 
             // evidencnaHeader
             // 
@@ -271,8 +272,8 @@
             // desniSplitContainer.Panel2
             // 
             this.desniSplitContainer.Panel2.Controls.Add(this.fakulteteGroupBox);
-            this.desniSplitContainer.Size = new System.Drawing.Size(1028, 583);
-            this.desniSplitContainer.SplitterDistance = 634;
+            this.desniSplitContainer.Size = new System.Drawing.Size(1015, 583);
+            this.desniSplitContainer.SplitterDistance = 625;
             this.desniSplitContainer.TabIndex = 0;
             // 
             // panel1
@@ -281,16 +282,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(247, 583);
+            this.panel1.Size = new System.Drawing.Size(260, 583);
             this.panel1.TabIndex = 5;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.desniSplitContainer);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(247, 26);
+            this.panel2.Location = new System.Drawing.Point(260, 26);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1028, 583);
+            this.panel2.Size = new System.Drawing.Size(1015, 583);
             this.panel2.TabIndex = 6;
             // 
             // Form1
@@ -303,7 +304,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Iskalnik";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
