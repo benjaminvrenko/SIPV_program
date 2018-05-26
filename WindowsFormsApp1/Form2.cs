@@ -65,27 +65,46 @@ namespace WindowsFormsApp1
             }
             for(int x=0;x<seznamKnjig.Count;x++)
             {
-                Match avtor = Regex.Match(seznamKnjig[x],@"author\svalue");
+                Match naslov = Regex.Match(seznamKnjig[x], @"title\svalue"">(.*)</a>");
+                ListViewItem knjiga = new ListViewItem(naslov.Groups[1].Value);
+                Match avtor = Regex.Match(seznamKnjig[x], @"author\svalue"">(.*)</span>");
                 if (avtor.Success)
                 {
-                    Match podatki = Regex.Match(seznamKnjig[x], @"title\svalue"">([\w\s\d\,\.\:\;\=\?\(\)\[\]\{\}\-\""]*)?<[\W\D\S]*?value"">([\w\s\d\,\.\:\;\=\?\(\)\[\]\{\}\-\""]*)[\W\D\S]*?<span>([\w\s\d\,\.\:\;\=\?\(\)\[\]\{\}\-\""]*)[\W\D\S]*?value"">([\w\s\d\,\.\:\;\=\?\(\)\[\]\{\}\-\""]*)[\W\D\S]*?value"">([\w\s\d\,\.\:\;\=\?\(\)\[\]\{\}\-\""]*)");
-                    ListViewItem knjiga = new ListViewItem(podatki.Groups[1].Value);  //naslov
-                    knjiga.SubItems.Add(podatki.Groups[2].Value);       //avtor
-                    knjiga.SubItems.Add(podatki.Groups[3].Value);       //tip
-                    knjiga.SubItems.Add(podatki.Groups[4].Value);       //jezik
-                    knjiga.SubItems.Add(podatki.Groups[5].Value);       //leto izdaje
-                    cobissListView.Items.Add(knjiga);
+                    knjiga.SubItems.Add(avtor.Groups[1].Value);
                 }
                 else
                 {
-                    Match podatki2 = Regex.Match(seznamKnjig[x], @"title\svalue"">([\w\s\d\,\.\:\;\=\?\(\)\[\]\{\}\-\""]*)[\S\W\D]*?span>([\w\s\d\,\.\:\;\=\?\(\)\[\]\{\}\-\""]*)[\S\W\D]*?value"">([\w\s\d\,\.\:\;\=\?\(\)\[\]\{\}\-\""]*)[\S\W\D]*?value"">([\w\s\d\,\.\:\;\=\?\(\)\[\]\{\}\-\""]*)");
-                    ListViewItem knjiga = new ListViewItem(podatki2.Groups[1].Value);  //naslov 
-                    knjiga.SubItems.Add(Ime+" "+ Priimek);                            //avtor
-                    knjiga.SubItems.Add(podatki2.Groups[2].Value);       //tip
-                    knjiga.SubItems.Add(podatki2.Groups[3].Value);       //jezik
-                    knjiga.SubItems.Add(podatki2.Groups[4].Value);       //leto izdaje
-                    cobissListView.Items.Add(knjiga);
+                    knjiga.SubItems.Add(Ime+Priimek);
                 }
+                Match tip = Regex.Match(seznamKnjig[x], @"<span>(.*)</span>");
+                if (tip.Success)
+                {
+                    knjiga.SubItems.Add(tip.Groups[1].Value);
+                }
+                else
+                {
+                    knjiga.SubItems.Add(" ");
+                }
+                Match jezik = Regex.Match(seznamKnjig[x], @"language-data""><span\sclass=""value"">(.*)</span></span>");
+                if (jezik.Success)
+                {
+                    knjiga.SubItems.Add(jezik.Groups[1].Value);
+                }
+                else
+                {
+                    knjiga.SubItems.Add(" ");
+                }
+                Match leto = Regex.Match(seznamKnjig[x], @"publishDate-data""><span\sclass=""value"">(.*)</span></span>");
+                if (leto.Success)
+                {
+                    knjiga.SubItems.Add(leto.Groups[1].Value);
+                }
+                else
+                {
+                    knjiga.SubItems.Add(" ");
+                }
+                cobissListView.Items.Add(knjiga);
+                
             }
             
                 
