@@ -134,6 +134,18 @@ namespace WindowsFormsApp1
                     else
                         raziskovalec.SubItems.Add(vsiRaziskovalci[i].SelectSingleNode("science").InnerText);         // glavno področje
 
+
+                    //email, dobimo json string in najdemo mail z regexom
+                    string json = client.DownloadString(" http://www.sicris.si/Common/rest.aspx?sessionID=1234CRIS12002B01B01A03IZUMBFICDOSKJHS588Nn44131&fields=&country=SI_JSON&entity=rsr&methodCall=id= " + vsiRaziskovalci[i].Attributes[1].Value + "%20and%20lang=slv");
+                    Match najdenMail = Regex.Match(json, @"EMAIL"":""(.*?)""");
+                    if (najdenMail.Success)
+                    {
+                        string mail = najdenMail.Groups[1].Value;
+                        raziskovalec.SubItems.Add(mail);
+                    }
+                    else
+                        raziskovalec.SubItems.Add(" ");
+
                     rezultatiListView.Items.Add(raziskovalec);
 
 
@@ -194,7 +206,7 @@ namespace WindowsFormsApp1
 
                 Form2 prikazGradivForm = new Form2(ID);
                 
-                prikazGradivForm.Show();
+                prikazGradivForm.Show(this);
 
 
             }
