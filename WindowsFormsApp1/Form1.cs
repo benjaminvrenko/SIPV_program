@@ -203,8 +203,9 @@ namespace WindowsFormsApp1
             if (e.IsSelected)
             {
                 string ID = rezultatiListView.SelectedItems[0].Text;
-
-                Form2 prikazGradivForm = new Form2(ID);
+                string ime= rezultatiListView.SelectedItems[0].SubItems[2].Text;
+                string priimek = rezultatiListView.SelectedItems[0].SubItems[3].Text;
+                Form2 prikazGradivForm = new Form2(ID,ime, priimek);
                 
                 prikazGradivForm.Show(this);
 
