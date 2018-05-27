@@ -237,27 +237,25 @@ namespace WindowsFormsApp1
                // cobissListView = tmpview;
            // }
            
-            int index = 0;
-            for(int x=0; x<cobissListView.Items.Count;x++)
+            
+            foreach (ListViewItem item in cobissListView.Items)
             {
-                for(int y=0; y<cobissListView.Items[x].SubItems.Count;y++)
+                int index = 0;
+                foreach (ListViewItem.ListViewSubItem subitem in item.SubItems)
                 {
 
 
-                    bool vsebuje = cobissListView.Items[x].SubItems[y].Text.Contains(naslovgradivaBox.Text);
+                    bool vsebuje = subitem.Text.Contains(naslovgradivaBox.Text);
                     if (vsebuje == true)
                     {
-                        index++;
                         break;
                     }
                     else
-                    {
-                        if (y == 4)
+                    {   if(index==4)
                         {
-                            cobissListView.Items[index].Remove();
-                            index = 0;
+                            item.Remove();
                         }
-                                                                      
+                        index++;     
                     }
                 }
             }
