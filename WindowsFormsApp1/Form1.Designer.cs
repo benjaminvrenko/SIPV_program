@@ -57,7 +57,7 @@
             this.desniSplitContainer = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.sicrissWorker = new System.ComponentModel.BackgroundWorker();
+            this.sicrisWorker = new System.ComponentModel.BackgroundWorker();
             this.toolStrip1.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.fakulteteGroupBox.SuspendLayout();
@@ -143,6 +143,7 @@
             this.fakulteteListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.fakulteteHeader});
             this.fakulteteListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fakulteteListView.FullRowSelect = true;
             this.fakulteteListView.Location = new System.Drawing.Point(3, 19);
             this.fakulteteListView.Name = "fakulteteListView";
             this.fakulteteListView.Size = new System.Drawing.Size(449, 561);
@@ -327,11 +328,11 @@
             this.panel2.Size = new System.Drawing.Size(1193, 583);
             this.panel2.TabIndex = 6;
             // 
-            // sicrissWorker
+            // sicrisWorker
             // 
-            this.sicrissWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.sicrissWorker_DoWork);
-            this.sicrissWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.sicrissWorker_ProgressChanged);
-            this.sicrissWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.sicrissWorker_RunWorkerCompleted);
+            this.sicrisWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.sicrissWorker_DoWork);
+            this.sicrisWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.sicrissWorker_ProgressChanged);
+            this.sicrisWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.sicrissWorker_RunWorkerCompleted);
             // 
             // Form1
             // 
@@ -391,7 +392,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ColumnHeader Email;
-        private System.ComponentModel.BackgroundWorker sicrissWorker;
+        private System.ComponentModel.BackgroundWorker sicrisWorker;
         private System.Windows.Forms.ToolStripProgressBar progressBarBranje;
         private System.Windows.Forms.ToolStripProgressBar progressBarFill;
         private System.Windows.Forms.ToolStripStatusLabel statusBarLabel;

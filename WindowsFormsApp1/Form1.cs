@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            sicrissWorker.WorkerReportsProgress = true;
+            sicrisWorker.WorkerReportsProgress = true;
 
             client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleted);
             client.DownloadProgressChanged += new System.Net.DownloadProgressChangedEventHandler(DownloadProgressChanged);
@@ -184,7 +184,7 @@ namespace WindowsFormsApp1
                 if (procentComplete > procentMax1)
                 {
                     procentMax1 = procentComplete;
-                    sicrissWorker.ReportProgress(procentComplete);
+                    sicrisWorker.ReportProgress(procentComplete);
                 }
 
             }
@@ -199,7 +199,7 @@ namespace WindowsFormsApp1
         {
             raziskovalecSearch = System.IO.File.ReadAllText("sicrisSearchData");
             statusBarLabel.Text = "Branje podatkov...";
-            sicrissWorker.RunWorkerAsync();
+            sicrisWorker.RunWorkerAsync();
         }
 
 
