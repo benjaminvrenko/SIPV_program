@@ -242,6 +242,7 @@
             this.rezultatiListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.rezultatiListView.GridLines = true;
             this.rezultatiListView.Location = new System.Drawing.Point(3, 19);
+            this.rezultatiListView.MultiSelect = false;
             this.rezultatiListView.Name = "rezultatiListView";
             this.rezultatiListView.Size = new System.Drawing.Size(728, 561);
             this.rezultatiListView.TabIndex = 0;
@@ -251,11 +252,12 @@
             // evidencnaHeader
             // 
             this.evidencnaHeader.Text = "Evid. št.";
-            this.evidencnaHeader.Width = 90;
+            this.evidencnaHeader.Width = 70;
             // 
             // nazivHeader
             // 
             this.nazivHeader.Text = "Naziv";
+            this.nazivHeader.Width = 50;
             // 
             // priimekHeader
             // 
@@ -267,7 +269,7 @@
             // 
             this.imeHeader.DisplayIndex = 2;
             this.imeHeader.Text = "Ime";
-            this.imeHeader.Width = 100;
+            this.imeHeader.Width = 75;
             // 
             // podrocjeHeader
             // 
@@ -339,8 +341,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Iskalnik";
+            this.Text = "Iskalnik baze raziskovalcev";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

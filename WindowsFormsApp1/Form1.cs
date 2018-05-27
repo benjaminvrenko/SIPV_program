@@ -195,7 +195,7 @@ namespace WindowsFormsApp1
         private void DownloadCompleted(object sender, AsyncCompletedEventArgs e)
         {
             raziskovalecSearch = System.IO.File.ReadAllText("sicrisSearchData");
-            MessageBox.Show("The download is completed!");
+            statusBarLabel.Text = "Branje podatkov...";
             sicrissWorker.RunWorkerAsync();
         }
 

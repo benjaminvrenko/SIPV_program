@@ -91,6 +91,7 @@ namespace WindowsFormsApp1
                 Match naslov = Regex.Match(seznamKnjig[x], @"title\svalue"">(.*)</a>");
                 ListViewItem knjiga = new ListViewItem(naslov.Groups[1].Value);
                 Match avtor = Regex.Match(seznamKnjig[x], @"author\svalue"">(.*)</span>");
+                
                 if (avtor.Success)
                 {
                     knjiga.SubItems.Add(avtor.Groups[1].Value);
