@@ -81,7 +81,7 @@ namespace WindowsFormsApp1
             MatchCollection IDCOBISSMatch = Regex.Matches(celotnaHTMLvsebina, @"data-cobissId=""(.*)?""");
             foreach(Match zadetek in IDCOBISSMatch)
             {
-                IDCobiss.Add(zadetek.Value);
+                IDCobiss.Add(zadetek.Groups[1].Value);
             }
             MatchCollection zadetki = Regex.Matches(celotnaHTMLvsebina, @"title\svalue"">[\W\s\d\D]*?e-dostop");
             foreach(Match zadetek in zadetki)
@@ -293,14 +293,23 @@ namespace WindowsFormsApp1
             }
         }
 
+
+
         private void cobissListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (e.IsSelected)
             {
-                System.Diagnostics.Process.Start("http://google.com");
+                if (cobissListView.SelectedItems.Count > 0)
+                {
+                    var indeks = cobissListView.Items.IndexOf(cobissListView.SelectedItems[0]);
+                    System.Diagnostics.Process.Start("https://plus.cobiss.si/opac7/bib/" + IDCobiss[indeks]);
+                }
+
 
 
             }
         }
+
+
     }
 }
