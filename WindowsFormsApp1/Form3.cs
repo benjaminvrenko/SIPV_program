@@ -71,8 +71,78 @@ namespace WindowsFormsApp1
             string fax = telefaxZadetki.Groups[2].Value;
 
             Match mailZadetki = Regex.Match(celotnaHTMLvsebina, @"""EMAIL"":""(.*?),""URL"":""(.*?)""");         //mail in spletna stran
-            string mail = mailZadetki.Groups[1].Value;
+            string mail = mailZadetki.Groups[1].Value;                                              //escape characterji so not ponucaj eno funkcijo da se jih odstrani, bi mogla bit knjižnica za to
             string splet = mailZadetki.Groups[2].Value;
+
+
+            Match zaposleni = Regex.Match(celotnaHTMLvsebina, @"""EMPLOY"":.*?""GROUPS");                           // string zaposleni
+            string zaposleniBulk = zaposleni.Value;
+
+            MatchCollection zaposleniZadetki = Regex.Matches(zaposleniBulk, @"LNAME"":""(.*?)"",""FNAME"":""(.*?)""");    //priimki in imena zaposlenih
+            List<string> imenapriimki = new List<string>();
+            foreach(Match item in zaposleniZadetki)
+            {
+                imenapriimki.Add(item.Groups[1] + " " + item.Groups[2]);
+            }
+
+            Match skupinesjaaline = Regex.Match(celotnaHTMLvsebina, @"GROUPS");                           // pogleda če so skupine
+            if (skupinesjaaline.Success)
+            {
+                Match projektiajne = Regex.Match(celotnaHTMLvsebina, @"PROJECTS");                           // pogleda če so projekti
+                if (projektiajne.Success)
+                {
+                    Match groupsBulk = Regex.Match(celotnaHTMLvsebina, @"""GROUPS.*?,""PROJECTS""");                           // dobi bulk najde idje in imena za skupine
+                    string bulkGroup = groupsBulk.Value;
+
+                    MatchCollection skupineZadetki = Regex.Matches(bulkGroup, @"""GRP_NAME"":""(.*?)"".*?GRPID"":""(.*?)""");
+                    List<string> imenaskupin = new List<string>();
+                    List<string> idskupin = new List<string>();
+                    foreach(Match zadetek in skupineZadetki)
+                    {
+                        imenaskupin.Add(zadetek.Groups[1].Value);
+                        idskupin.Add(zadetek.Groups[2].Value);
+                    }
+
+                    ////////////////////////////////////////////////////////  
+                    //////     PROJEKTI                             ////////
+                    ////////////////////////////////////////////////////////
+
+                    Match projektizadatak = Regex.Match(celotnaHTMLvsebina, @"""PROJECTS"":.*?,""EQUIPMENT");
+                    string projektiBulk = projektizadatak.Value;
+
+                    MatchCollection projektiMatch = Regex.Matches(projektiBulk, @"TITLE"":""(.*?)"".*?PRJID"":""(.*?)""");
+                    List<string> imenaProjektov = new List<string>();
+                    List<string> IDProjektov = new List<string>();
+                    foreach(Match item in projektiMatch)
+                    {
+                        imenaProjektov.Add(item.Groups[1].Value);
+                        IDProjektov.Add(item.Groups[2].Value);
+                    }
+
+                }
+                else
+                {
+                    Match groupsBulk2 = Regex.Match(celotnaHTMLvsebina, @"""GROUPS.*?}]}");                           // dobi bulk to je vse v primeru da faks nima projektov
+                    string bulkGroup2 = groupsBulk2.Value;
+
+                    MatchCollection skupineZadetki = Regex.Matches(bulkGroup2, @"""GRP_NAME"":""(.*?)"".*?GRPID"":""(.*?)""");
+                    List<string> imenaskupin = new List<string>();
+                    List<string> idskupin = new List<string>();
+                    foreach (Match zadetek in skupineZadetki)
+                    {
+                        imenaskupin.Add(zadetek.Groups[1].Value);
+                        idskupin.Add(zadetek.Groups[2].Value);
+                    }
+                }
+            }
+            else
+            {
+                //čuj nimaš skupin
+            }
+            
+
+
+
         }
 
         private void projektProgramListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -104,5 +174,6 @@ namespace WindowsFormsApp1
 
             }
         }
+
     }
 }

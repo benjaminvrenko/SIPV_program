@@ -262,7 +262,7 @@ namespace WindowsFormsApp1
         {
             if (e.IsSelected)
             {
-                if (rezultatiListView.SelectedItems.Count > 0)
+                if (fakulteteListView.SelectedItems.Count > 0)
                 {
                     string ID = seznamIDfakultet[fakulteteListView.Items.IndexOf(fakulteteListView.SelectedItems[0])];
                     Form3 prikazFakulteteForm = new Form3(ID);
