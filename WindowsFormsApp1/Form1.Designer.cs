@@ -31,8 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.progressBarBranje = new System.Windows.Forms.ToolStripProgressBar();
+            this.progressBarFill = new System.Windows.Forms.ToolStripProgressBar();
+            this.statusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.fakulteteGroupBox = new System.Windows.Forms.GroupBox();
             this.fakulteteListView = new System.Windows.Forms.ListView();
             this.fakulteteHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -50,12 +52,14 @@
             this.imeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.podrocjeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.vedaHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.desniSplitContainer = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.sicrissWorker = new System.ComponentModel.BackgroundWorker();
+            this.progressBarDownload = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.statusBar.SuspendLayout();
             this.fakulteteGroupBox.SuspendLayout();
             this.iskanjeGroupBox.SuspendLayout();
             this.rezultatiGroupBox.SuspendLayout();
@@ -87,22 +91,35 @@
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(78, 23);
             this.toolStripDropDownButton1.Text = "Datoteka";
             this.toolStripDropDownButton1.ToolTipText = "Datoteka";
-            this.toolStripDropDownButton1.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
-            // statusStrip1
+            // statusBar
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 609);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1453, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.progressBarDownload,
+            this.progressBarBranje,
+            this.progressBarFill,
+            this.statusBarLabel});
+            this.statusBar.Location = new System.Drawing.Point(0, 609);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(1453, 22);
+            this.statusBar.TabIndex = 0;
+            this.statusBar.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // progressBarBranje
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            this.progressBarBranje.Name = "progressBarBranje";
+            this.progressBarBranje.Size = new System.Drawing.Size(200, 16);
+            this.progressBarBranje.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            // 
+            // progressBarFill
+            // 
+            this.progressBarFill.Name = "progressBarFill";
+            this.progressBarFill.Size = new System.Drawing.Size(100, 16);
+            // 
+            // statusBarLabel
+            // 
+            this.statusBarLabel.Name = "statusBarLabel";
+            this.statusBarLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // fakulteteGroupBox
             // 
@@ -178,6 +195,7 @@
             this.stRezultatovCBox.Name = "stRezultatovCBox";
             this.stRezultatovCBox.Size = new System.Drawing.Size(59, 24);
             this.stRezultatovCBox.TabIndex = 27;
+            this.stRezultatovCBox.SelectionChangeCommitted += new System.EventHandler(this.stRezultatovCBox_SelectionChangeCommitted);
             // 
             // searchButton
             // 
@@ -261,6 +279,11 @@
             this.vedaHeader.Text = "Gl. področje";
             this.vedaHeader.Width = 120;
             // 
+            // Email
+            // 
+            this.Email.Text = "Email";
+            this.Email.Width = 130;
+            // 
             // desniSplitContainer
             // 
             this.desniSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -296,10 +319,16 @@
             this.panel2.Size = new System.Drawing.Size(1193, 583);
             this.panel2.TabIndex = 6;
             // 
-            // Email
+            // sicrissWorker
             // 
-            this.Email.Text = "Email";
-            this.Email.Width = 130;
+            this.sicrissWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.sicrissWorker_DoWork);
+            this.sicrissWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.sicrissWorker_ProgressChanged);
+            this.sicrissWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.sicrissWorker_RunWorkerCompleted);
+            // 
+            // progressBarDownload
+            // 
+            this.progressBarDownload.Name = "progressBarDownload";
+            this.progressBarDownload.Size = new System.Drawing.Size(200, 16);
             // 
             // Form1
             // 
@@ -308,15 +337,15 @@
             this.ClientSize = new System.Drawing.Size(1453, 631);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
             this.Text = "Iskalnik";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
             this.fakulteteGroupBox.ResumeLayout(false);
             this.iskanjeGroupBox.ResumeLayout(false);
             this.iskanjeGroupBox.PerformLayout();
@@ -336,8 +365,7 @@
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.GroupBox fakulteteGroupBox;
         private System.Windows.Forms.ListView fakulteteListView;
         private System.Windows.Forms.ColumnHeader fakulteteHeader;
@@ -359,6 +387,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ColumnHeader Email;
+        private System.ComponentModel.BackgroundWorker sicrissWorker;
+        private System.Windows.Forms.ToolStripProgressBar progressBarBranje;
+        private System.Windows.Forms.ToolStripProgressBar progressBarFill;
+        private System.Windows.Forms.ToolStripStatusLabel statusBarLabel;
+        private System.Windows.Forms.ToolStripProgressBar progressBarDownload;
     }
 }
 

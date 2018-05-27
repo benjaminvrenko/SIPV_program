@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
 
             celotnaHTMLvsebina = client.DownloadString(cobissURL);
 
-            MatchCollection naslovi = Regex.Matches(celotnaHTMLvsebina, @"odd biblioentry");
+    //        MatchCollection naslovi = Regex.Matches(celotnaHTMLvsebina, @"odd biblioentry.*data-entry="");
 
 
         }
