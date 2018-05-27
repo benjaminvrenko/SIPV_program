@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
         {
             if (e.IsSelected)
             {
-                if (projektProgramListView.SelectedItems.Count > 0)
+                if (projektiListView.SelectedItems.Count > 0)
                 {
                     //TBA 
 
@@ -165,7 +165,7 @@ namespace WindowsFormsApp1
         {
             if (e.IsSelected)
             {
-                if (projektProgramListView.SelectedItems.Count > 0)
+                if (projektiListView.SelectedItems.Count > 0)
                 {
                     //TBA
                 }
