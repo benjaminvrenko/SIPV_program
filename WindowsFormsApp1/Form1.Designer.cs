@@ -32,6 +32,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.progressBarDownload = new System.Windows.Forms.ToolStripProgressBar();
             this.progressBarBranje = new System.Windows.Forms.ToolStripProgressBar();
             this.progressBarFill = new System.Windows.Forms.ToolStripProgressBar();
             this.statusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -57,7 +58,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.sicrissWorker = new System.ComponentModel.BackgroundWorker();
-            this.progressBarDownload = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStrip1.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.fakulteteGroupBox.SuspendLayout();
@@ -105,6 +105,11 @@
             this.statusBar.TabIndex = 0;
             this.statusBar.Text = "statusStrip1";
             // 
+            // progressBarDownload
+            // 
+            this.progressBarDownload.Name = "progressBarDownload";
+            this.progressBarDownload.Size = new System.Drawing.Size(200, 16);
+            // 
             // progressBarBranje
             // 
             this.progressBarBranje.Name = "progressBarBranje";
@@ -143,6 +148,7 @@
             this.fakulteteListView.Size = new System.Drawing.Size(449, 561);
             this.fakulteteListView.TabIndex = 0;
             this.fakulteteListView.UseCompatibleStateImageBehavior = false;
+            this.fakulteteListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.fakulteteListView_ItemSelectionChanged);
             // 
             // fakulteteHeader
             // 
@@ -326,11 +332,6 @@
             this.sicrissWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.sicrissWorker_DoWork);
             this.sicrissWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.sicrissWorker_ProgressChanged);
             this.sicrissWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.sicrissWorker_RunWorkerCompleted);
-            // 
-            // progressBarDownload
-            // 
-            this.progressBarDownload.Name = "progressBarDownload";
-            this.progressBarDownload.Size = new System.Drawing.Size(200, 16);
             // 
             // Form1
             // 

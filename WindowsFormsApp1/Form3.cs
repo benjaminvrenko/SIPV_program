@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                napolniSeznamFakultet();
+            //    napolniSeznamFakultet();
             }
         }
 

@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         private string raziskovalecSearch = null;
 
         private List<ListViewItem> seznamItemovSicriss = new List<ListViewItem>();
+        private List<string> seznamIDfakultet = new List<string>();
         System.Net.WebClient client = new System.Net.WebClient();
 
         public Form1()
@@ -80,6 +81,8 @@ namespace WindowsFormsApp1
             for(int i=0; i< seznamFakultet.Count; i++)
             {
                 ListViewItem fakulteta = new ListViewItem(seznamFakultet[i].SelectSingleNode("name").InnerText);
+                string IDfakultete = seznamFakultet[i].Attributes[0].Value;
+                seznamIDfakultet.Add(IDfakultete);
                 fakulteteListView.Items.Add(fakulteta);
 
             }
@@ -251,6 +254,20 @@ namespace WindowsFormsApp1
         {
             statusBar.Text = "Branje naloženih podatkov...";
             progressBarBranje.Value = e.ProgressPercentage;
+        }
+
+        private void fakulteteListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                string ID = seznamIDfakultet[fakulteteListView.Items.IndexOf(fakulteteListView.SelectedItems[0])];
+
+                Form3 prikazFakulteteForm = new Form3(ID);
+
+                prikazFakulteteForm.Show(this);
+
+
+            }
         }
 
         private void sicrissWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
