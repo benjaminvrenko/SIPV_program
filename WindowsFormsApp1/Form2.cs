@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
 
             if (ID == null)
             {
-                MessageBox.Show("Napaka, evidenčna številka ni bila pridobljena.");
+                MessageBox.Show("Napaka! Evidenčna številka ni bila pridobljena.");
             }
             else
             {
