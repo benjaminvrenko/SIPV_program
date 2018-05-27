@@ -92,6 +92,7 @@
             this.cobissListView.Size = new System.Drawing.Size(691, 459);
             this.cobissListView.TabIndex = 0;
             this.cobissListView.UseCompatibleStateImageBehavior = false;
+            this.cobissListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.cobissListView_ItemSelectionChanged);
             // 
             // gradivoHeader
             // 
