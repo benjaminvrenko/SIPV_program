@@ -170,7 +170,7 @@ namespace WindowsFormsApp1
             telefon = telefaxZadetki.Groups[1].Value;
             fax = telefaxZadetki.Groups[2].Value;
 
-            Match mailZadetki = Regex.Match(celotnaHTMLvsebina, @"""EMAIL"":""(.*?),""URL"":""(.*?)""");         //mail in spletna stran
+            Match mailZadetki = Regex.Match(celotnaHTMLvsebina, @"""EMAIL"":""(.*?)"",""URL"":""(.*?)""");         //mail in spletna stran
             mail = mailZadetki.Groups[1].Value;                                              //escape characterji so not ponucaj eno funkcijo da se jih odstrani, bi mogla bit knjižnica za to
             splet = mailZadetki.Groups[2].Value;
 
