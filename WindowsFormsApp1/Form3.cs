@@ -43,6 +43,34 @@ namespace WindowsFormsApp1
             celotnaHTMLvsebina = client.DownloadString(sicrisURL);
         }
 
+        private void projektProgramListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                if (projektProgramListView.SelectedItems.Count > 0)
+                {
+                    //TBA 
 
+
+                }
+
+
+
+            }
+        }
+
+        private void seznamSkupinListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                if (projektProgramListView.SelectedItems.Count > 0)
+                {
+                    //TBA
+                }
+
+
+
+            }
+        }
     }
 }

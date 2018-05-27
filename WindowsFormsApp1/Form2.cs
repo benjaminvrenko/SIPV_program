@@ -45,6 +45,7 @@ namespace WindowsFormsApp1
             {
                 napolniSeznamGradiv();
                
+
                 
                 foreach (ListViewItem item in cobissListView.Items)
                 {
@@ -309,7 +310,5 @@ namespace WindowsFormsApp1
 
             }
         }
-
-
     }
 }
