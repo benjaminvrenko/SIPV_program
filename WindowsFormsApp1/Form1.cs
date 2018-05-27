@@ -222,14 +222,16 @@ namespace WindowsFormsApp1
         {
             if (e.IsSelected)
             {
-                string ID = rezultatiListView.SelectedItems[0].Text;
-                string ime= rezultatiListView.SelectedItems[0].SubItems[2].Text;
-                string priimek = rezultatiListView.SelectedItems[0].SubItems[3].Text;
-                Form2 prikazGradivForm = new Form2(ID,ime, priimek);
-                
-                prikazGradivForm.Show(this);
+                if (rezultatiListView.SelectedItems.Count > 0)
+                {
+                    string ID = rezultatiListView.SelectedItems[0].Text;
+                    string ime = rezultatiListView.SelectedItems[0].SubItems[2].Text;
+                    string priimek = rezultatiListView.SelectedItems[0].SubItems[3].Text;
+                    Form2 prikazGradivForm = new Form2(ID, ime, priimek);
 
+                    prikazGradivForm.Show(this);
 
+                }
             }
 
         }
@@ -260,12 +262,12 @@ namespace WindowsFormsApp1
         {
             if (e.IsSelected)
             {
-                string ID = seznamIDfakultet[fakulteteListView.Items.IndexOf(fakulteteListView.SelectedItems[0])];
-
-                Form3 prikazFakulteteForm = new Form3(ID);
-
-                prikazFakulteteForm.Show(this);
-
+                if (rezultatiListView.SelectedItems.Count > 0)
+                {
+                    string ID = seznamIDfakultet[fakulteteListView.Items.IndexOf(fakulteteListView.SelectedItems[0])];
+                    Form3 prikazFakulteteForm = new Form3(ID);
+                    prikazFakulteteForm.Show(this);
+                }
 
             }
         }
