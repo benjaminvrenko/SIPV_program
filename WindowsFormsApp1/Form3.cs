@@ -42,7 +42,8 @@ namespace WindowsFormsApp1
             projektiListView.View = View.Details;
             programiListView.View = View.Details;
             skupineListView.View = View.Details;
-            vsiRaziskListView.View = View.List;
+
+            vsiRaziskListBox.ScrollAlwaysVisible = true;
 
             projektiListView.FullRowSelect = true;
             programiListView.FullRowSelect = true;
@@ -54,6 +55,7 @@ namespace WindowsFormsApp1
             programiListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.None);
             skupineListView.FullRowSelect = true;
             skupineListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.None);
+
 
             client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleted);
             client.DownloadProgressChanged += new System.Net.DownloadProgressChangedEventHandler(DownloadProgressChanged);
@@ -90,7 +92,7 @@ namespace WindowsFormsApp1
         {
             nazivLabel.Text = "Naziv: " + imeFaxa;
             krajLabel.Text = "Kraj: " + mesto;
-            odgOsebaLabel.Text = "Odgovorna oseba: " + naziv1 + " " + naziv2 + " " + imeDekana + " " + priimekDekana;
+            odgOsebaLabel.Text = "Odgovorna oseba: " + naziv2 + " " + imeDekana + " " + priimekDekana + ", " + naziv1;
             naslovLabel.Text = "Naslov: " + naslov + ", " + postnaSt + " " + mesto2 + ", " + drzava;
             telefonLabel.Text = "Telefon: " + telefon;
             faksLabel.Text = "Faks: " + fax;
@@ -116,8 +118,9 @@ namespace WindowsFormsApp1
 
             for(int z = 0; z < imenapriimki.Count; z++)
             {
-                vsiRaziskListView.Items.Add(imenapriimki[z]);
+                vsiRaziskListBox.Items.Add(imenapriimki[z]);
             }
+            vsiRaziskListBox.HorizontalScrollbar = true;
 
             toolStripStatusLabel1.Text = "Končano!";
 
@@ -157,8 +160,8 @@ namespace WindowsFormsApp1
             imeDekana = dekanZadetki.Groups[2].Value;
 
             Match dekanNaziviZadetki = Regex.Match(celotnaHTMLvsebina, @"""DIRFUN"":""(.*?)"",""DIRTTLPRE"":""(.*?)""");         //nazivi dekana
-            string naziv1 = dekanNaziviZadetki.Groups[1].Value;
-            string naziv2 = dekanNaziviZadetki.Groups[2].Value;
+            naziv1 = dekanNaziviZadetki.Groups[1].Value;
+            naziv2 = dekanNaziviZadetki.Groups[2].Value;
 
             Match naslovZadetki = Regex.Match(celotnaHTMLvsebina, @"""ADDR1"":""(.*?)"",""POSTALCODE"":""(.*?)"",""CITY"":""(.*?)"",""COUNTRY"":""(.*?)""");         //naslov faxa
             naslov = naslovZadetki.Groups[1].Value;
@@ -170,7 +173,7 @@ namespace WindowsFormsApp1
             telefon = telefaxZadetki.Groups[1].Value;
             fax = telefaxZadetki.Groups[2].Value;
 
-            Match mailZadetki = Regex.Match(celotnaHTMLvsebina, @"""EMAIL"":""(.*?),""URL"":""(.*?)""");         //mail in spletna stran
+            Match mailZadetki = Regex.Match(celotnaHTMLvsebina, @"""EMAIL"":""(.*?)"",""URL"":""(.*?)""");         //mail in spletna stran
             mail = mailZadetki.Groups[1].Value;                                              //escape characterji so not ponucaj eno funkcijo da se jih odstrani, bi mogla bit knjižnica za to
             splet = mailZadetki.Groups[2].Value;
 

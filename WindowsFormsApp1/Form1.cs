@@ -272,6 +272,13 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 cobissSearch = new Form2(null, null, null);
+
+            cobissSearch.Show(this);
+        }
+
         private void sicrissWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             int stItemov = seznamItemovSicriss.Count;

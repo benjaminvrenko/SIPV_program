@@ -58,6 +58,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.sicrisWorker = new System.ComponentModel.BackgroundWorker();
+            this.button1 = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.fakulteteGroupBox.SuspendLayout();
@@ -158,6 +159,7 @@
             // 
             // iskanjeGroupBox
             // 
+            this.iskanjeGroupBox.Controls.Add(this.button1);
             this.iskanjeGroupBox.Controls.Add(this.label5);
             this.iskanjeGroupBox.Controls.Add(this.raziskovalciBox);
             this.iskanjeGroupBox.Controls.Add(this.stRezultatovCBox);
@@ -206,9 +208,9 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(150, 134);
+            this.searchButton.Location = new System.Drawing.Point(15, 133);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(83, 28);
+            this.searchButton.Size = new System.Drawing.Size(226, 37);
             this.searchButton.TabIndex = 14;
             this.searchButton.Text = "Išči";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -334,6 +336,16 @@
             this.sicrisWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.sicrissWorker_ProgressChanged);
             this.sicrisWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.sicrissWorker_RunWorkerCompleted);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 189);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(226, 37);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Iskalnik po Cobiss-u";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,6 +409,7 @@
         private System.Windows.Forms.ToolStripProgressBar progressBarFill;
         private System.Windows.Forms.ToolStripStatusLabel statusBarLabel;
         private System.Windows.Forms.ToolStripProgressBar progressBarDownload;
+        private System.Windows.Forms.Button button1;
     }
 }
 
