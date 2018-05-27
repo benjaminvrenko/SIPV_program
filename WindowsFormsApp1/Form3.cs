@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
                     //////     PROJEKTI                             ////////
                     ////////////////////////////////////////////////////////
 
-                    Match projektizadatak = Regex.Match(celotnaHTMLvsebina, @"""PROJECTS"":.*?,""EQUIPMENT");
+                    Match projektizadatak = Regex.Match(celotnaHTMLvsebina, @"PROJECTS"":.*?}]");
                     string projektiBulk = projektizadatak.Value;
 
                     MatchCollection projektiMatch = Regex.Matches(projektiBulk, @"TITLE"":""(.*?)"".*?PRJID"":""(.*?)""");
@@ -122,7 +122,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    Match groupsBulk2 = Regex.Match(celotnaHTMLvsebina, @"""GROUPS.*?}]}");                           // dobi bulk to je vse v primeru da faks nima projektov
+                    Match groupsBulk2 = Regex.Match(celotnaHTMLvsebina, @"""GROUPS.*?}]");                           // dobi bulk to je vse v primeru da faks nima projektov
                     string bulkGroup2 = groupsBulk2.Value;
 
                     MatchCollection skupineZadetki = Regex.Matches(bulkGroup2, @"""GRP_NAME"":""(.*?)"".*?GRPID"":""(.*?)""");
@@ -139,8 +139,31 @@ namespace WindowsFormsApp1
             {
                 //čuj nimaš skupin
             }
-            
 
+            ///////////////////////////////////////
+            //////////      PROGRAMI      /////////
+            ///////////////////////////////////////
+
+            Match ilijeProgram = Regex.Match(celotnaHTMLvsebina, @"PROGRAMS");
+            if (ilijeProgram.Success)
+            {
+                Match programizadatak = Regex.Match(celotnaHTMLvsebina, @"PROGRAMS"":.*?}]");
+                string programiBulk = programizadatak.Value;
+
+                MatchCollection programiMatch = Regex.Matches(programiBulk, @"TITLE"":""(.*?)"".*?PRJID"":""(.*?)""");
+                List<string> imenaProgramov = new List<string>();
+                List<string> IDProgramov = new List<string>();
+                foreach (Match item in programiMatch)
+                {
+                    imenaProgramov.Add(item.Groups[1].Value);
+                    IDProgramov.Add(item.Groups[2].Value);
+                }
+
+            }
+            else
+            {
+                //nema programa
+            }
 
 
         }
