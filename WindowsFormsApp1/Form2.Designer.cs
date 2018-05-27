@@ -42,6 +42,8 @@
             this.stRezultatovCBox = new System.Windows.Forms.ComboBox();
             this.naslovgradivaBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.CobissButton = new System.Windows.Forms.Button();
+            this.CobissSearchtextbox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -113,6 +115,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CobissSearchtextbox);
+            this.groupBox2.Controls.Add(this.CobissButton);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.stRezultatovCBox);
             this.groupBox2.Controls.Add(this.naslovgradivaBox);
@@ -154,15 +158,33 @@
             this.naslovgradivaBox.Name = "naslovgradivaBox";
             this.naslovgradivaBox.Size = new System.Drawing.Size(218, 22);
             this.naslovgradivaBox.TabIndex = 25;
+            this.naslovgradivaBox.TextChanged += new System.EventHandler(this.naslovgradivaBox_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 16);
+            this.label1.Size = new System.Drawing.Size(110, 16);
             this.label1.TabIndex = 26;
-            this.label1.Text = "Naslov gradiva:";
+            this.label1.Text = "Po ključni besedi";
+            // 
+            // CobissButton
+            // 
+            this.CobissButton.Location = new System.Drawing.Point(152, 219);
+            this.CobissButton.Name = "CobissButton";
+            this.CobissButton.Size = new System.Drawing.Size(75, 23);
+            this.CobissButton.TabIndex = 29;
+            this.CobissButton.Text = "Isci";
+            this.CobissButton.UseVisualStyleBackColor = true;
+            this.CobissButton.Click += new System.EventHandler(this.CobissButton_Click);
+            // 
+            // CobissSearchtextbox
+            // 
+            this.CobissSearchtextbox.Location = new System.Drawing.Point(9, 191);
+            this.CobissSearchtextbox.Name = "CobissSearchtextbox";
+            this.CobissSearchtextbox.Size = new System.Drawing.Size(215, 22);
+            this.CobissSearchtextbox.TabIndex = 30;
             // 
             // Form2
             // 
@@ -196,5 +218,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox stRezultatovCBox;
+        private System.Windows.Forms.Button CobissButton;
+        private System.Windows.Forms.TextBox CobissSearchtextbox;
     }
 }
