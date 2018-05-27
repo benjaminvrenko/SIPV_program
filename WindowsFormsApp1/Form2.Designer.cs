@@ -37,10 +37,10 @@
             this.letoHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.viriHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.stRezultatovCBox = new System.Windows.Forms.ComboBox();
             this.naslovgradivaBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.stRezultatovCBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -90,19 +90,19 @@
             // 
             // tipHeader
             // 
-            this.tipHeader.Text = "Tip gradiva";
+            this.tipHeader.Text = "Avtor";
             // 
             // avtorjiHeader
             // 
-            this.avtorjiHeader.Text = "Soavtorji";
+            this.avtorjiHeader.Text = "Tip";
             // 
             // letoHeader
             // 
-            this.letoHeader.Text = "Leto izdaje";
+            this.letoHeader.Text = "Jezik";
             // 
             // viriHeader
             // 
-            this.viriHeader.Text = "Viri";
+            this.viriHeader.Text = "Leto izdaje";
             // 
             // groupBox2
             // 
@@ -119,6 +119,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtri";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(150, 16);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Št. prikazanih rezultatov:";
+            // 
+            // stRezultatovCBox
+            // 
+            this.stRezultatovCBox.FormattingEnabled = true;
+            this.stRezultatovCBox.Items.AddRange(new object[] {
+            "10",
+            "25",
+            "50",
+            "100"});
+            this.stRezultatovCBox.Location = new System.Drawing.Point(157, 79);
+            this.stRezultatovCBox.Name = "stRezultatovCBox";
+            this.stRezultatovCBox.Size = new System.Drawing.Size(70, 24);
+            this.stRezultatovCBox.TabIndex = 27;
+            // 
             // naslovgradivaBox
             // 
             this.naslovgradivaBox.Location = new System.Drawing.Point(9, 47);
@@ -134,28 +156,6 @@
             this.label1.Size = new System.Drawing.Size(103, 16);
             this.label1.TabIndex = 26;
             this.label1.Text = "Naslov gradiva:";
-            // 
-            // stRezultatovCBox
-            // 
-            this.stRezultatovCBox.FormattingEnabled = true;
-            this.stRezultatovCBox.Items.AddRange(new object[] {
-            "10",
-            "25",
-            "50",
-            "100"});
-            this.stRezultatovCBox.Location = new System.Drawing.Point(157, 79);
-            this.stRezultatovCBox.Name = "stRezultatovCBox";
-            this.stRezultatovCBox.Size = new System.Drawing.Size(70, 24);
-            this.stRezultatovCBox.TabIndex = 27;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 16);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Št. prikazanih rezultatov:";
             // 
             // Form2
             // 
