@@ -25,6 +25,7 @@ namespace WindowsFormsApp1
         List<string> idSkupin = new List<string>();
         List<string> imenaProgramov = new List<string>();
         List<string> idProgramov = new List<string>();
+        List<string> ImeinPriimekRaziskovalcev = new List<string>();
 
         string imeFaxa = null;
         string mesto = null;
@@ -32,6 +33,9 @@ namespace WindowsFormsApp1
         string naziv1, naziv2 = null;
         string naslov, postnaSt, mesto2, drzava = null;
         string telefon, fax, mail, splet = null;
+        string vodjaSkupine = null;
+        string OpisPrograma = null;
+        string OpisProjekta = null;
 
         System.Net.WebClient client = new System.Net.WebClient();
 
@@ -176,6 +180,7 @@ namespace WindowsFormsApp1
             Match mailZadetki = Regex.Match(celotnaHTMLvsebina, @"""EMAIL"":""(.*?)"",""URL"":""(.*?)""");         //mail in spletna stran
             mail = mailZadetki.Groups[1].Value;                                              //escape characterji so not ponucaj eno funkcijo da se jih odstrani, bi mogla bit knjižnica za to
             splet = mailZadetki.Groups[2].Value;
+            splet = Regex.Unescape(splet);
 
 
             Match zaposleni = Regex.Match(celotnaHTMLvsebina, @"""EMPLOY"":.*?""GROUPS");                           // string zaposleni
@@ -276,9 +281,19 @@ namespace WindowsFormsApp1
                 if (projektiListView.SelectedItems.Count > 0)
                 {
                     string urlZaProjekt = "http://www.sicris.si/Common/rest.aspx?sessionID=1234CRIS12002B01B01A03IZUMBFICDOSKJHS588Nn44131&fields=&country=SI_JSON&entity=prj&methodCall=id=" + IDProjektov[projektiListView.Items.IndexOf(projektiListView.SelectedItems[0])] + "%20and%20lang=slv";
+                    string projektDataRaw = client.DownloadString(urlZaProjekt);
 
-
-
+                    Match preverimoCeMaKaj = Regex.Match(projektDataRaw, @"ABSTRACT");
+                    if (preverimoCeMaKaj.Success)
+                    {
+                        Match opisZadetek = Regex.Match(projektDataRaw, @"ABSTRACT"":""(.*?)""");
+                        OpisProjekta = opisZadetek.Groups[1].Value;
+                        OpisProjekta = Regex.Unescape(OpisProjekta);
+                    }
+                    else
+                    {
+                        //eeem ja mmm ni kaj ne
+                    }
                 }
             }
         }
@@ -290,8 +305,19 @@ namespace WindowsFormsApp1
                 if (programiListView.SelectedItems.Count > 0)
                 {
                     string urlZaProgram = "http://www.sicris.si/Common/rest.aspx?sessionID=1234CRIS12002B01B01A03IZUMBFICDOSKJHS588Nn44131&fields=&country=SI_JSON&entity=prg&methodCall=id=" + idProgramov[programiListView.Items.IndexOf(programiListView.SelectedItems[0])] + "%20and%20lang=slv";
+                    string programiDataRaw = client.DownloadString(urlZaProgram);
 
-
+                    Match preverimoCeMaKaj = Regex.Match(programiDataRaw, @"ABSTRACT");
+                    if (preverimoCeMaKaj.Success)
+                    {
+                        Match opisZadetek = Regex.Match(programiDataRaw, @"ABSTRACT"":""(.*?)""");
+                        OpisPrograma = opisZadetek.Groups[1].Value;
+                        OpisPrograma = Regex.Unescape(OpisPrograma);
+                    }
+                    else
+                    {
+                        //eeem ja mmm ni kaj ne
+                    }
 
                 }
             }
@@ -304,9 +330,19 @@ namespace WindowsFormsApp1
                 if (skupineListView.SelectedItems.Count > 0)
                 {
                     string urlZaSkupine = "http://www.sicris.si/Common/rest.aspx?sessionID=1234CRIS12002B01B01A03IZUMBFICDOSKJHS588Nn44131&fields=&country=SI_JSON&entity=grp&methodCall=id=" + idSkupin[skupineListView.Items.IndexOf(skupineListView.SelectedItems[0])] + "%20and%20lang=slv";
+                    string skupineDataRaw = client.DownloadString(urlZaSkupine);
 
+                    Match vodjaMatch = Regex.Match(skupineDataRaw, @"""UPD"",""FNAME"":""(.*?)"",""LNAME"":""(.*?)""");
+                    vodjaSkupine = vodjaMatch.Groups[1].Value + " " + vodjaMatch.Groups[2].Value;
 
+                    Match claniskupineMatch = Regex.Match(skupineDataRaw, @"EMPLOY"":.*?}]");
+                    string claniskupineBulk = claniskupineMatch.Value;
 
+                    MatchCollection zaposleniMatch = Regex.Matches(claniskupineBulk, @"""LNAME"":""(.*?)"",""FNAME"":""(.*?)""");
+                    foreach(Match zadete in zaposleniMatch)
+                    {
+                        ImeinPriimekRaziskovalcev.Add(zadete.Groups[1] + " " + zadete.Groups[2]);
+                    }
                 }
             }
         }

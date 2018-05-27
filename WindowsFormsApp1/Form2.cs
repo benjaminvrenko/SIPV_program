@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
 
             if (ID == null)
             {
-                MessageBox.Show("Napaka! Evidenčna številka ni bila pridobljena.");
+               // MessageBox.Show("Napaka! Evidenčna številka ni bila pridobljena.");
             }
             else
             {
@@ -277,8 +277,9 @@ namespace WindowsFormsApp1
                 foreach (ListViewItem.ListViewSubItem subitem in item.SubItems)
                 {
 
-
-                    bool vsebuje = subitem.Text.Contains(naslovgradivaBox.Text);
+                    string compare1 = subitem.Text.ToUpper();
+                    string compare2 = naslovgradivaBox.Text.ToUpper();
+                    bool vsebuje = compare1.Contains(compare2);
                     if (vsebuje == true)
                     {
                         break;
