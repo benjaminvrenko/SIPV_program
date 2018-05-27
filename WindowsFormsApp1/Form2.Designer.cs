@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cobissListView = new System.Windows.Forms.ListView();
@@ -53,7 +54,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(933, 586);
+            this.panel1.Size = new System.Drawing.Size(933, 480);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
@@ -63,7 +64,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(697, 586);
+            this.groupBox1.Size = new System.Drawing.Size(697, 480);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rezultati s Cobiss-a";
@@ -77,32 +78,38 @@
             this.letoHeader,
             this.viriHeader});
             this.cobissListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cobissListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cobissListView.GridLines = true;
             this.cobissListView.Location = new System.Drawing.Point(3, 18);
             this.cobissListView.Name = "cobissListView";
-            this.cobissListView.Size = new System.Drawing.Size(691, 565);
+            this.cobissListView.Size = new System.Drawing.Size(691, 459);
             this.cobissListView.TabIndex = 0;
             this.cobissListView.UseCompatibleStateImageBehavior = false;
             // 
             // gradivoHeader
             // 
             this.gradivoHeader.Text = "Naslov gradiva";
-            this.gradivoHeader.Width = 150;
+            this.gradivoHeader.Width = 230;
             // 
             // tipHeader
             // 
             this.tipHeader.Text = "Avtor";
+            this.tipHeader.Width = 150;
             // 
             // avtorjiHeader
             // 
             this.avtorjiHeader.Text = "Tip";
+            this.avtorjiHeader.Width = 120;
             // 
             // letoHeader
             // 
             this.letoHeader.Text = "Jezik";
+            this.letoHeader.Width = 80;
             // 
             // viriHeader
             // 
             this.viriHeader.Text = "Leto izdaje";
+            this.viriHeader.Width = 85;
             // 
             // groupBox2
             // 
@@ -114,7 +121,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox2.Location = new System.Drawing.Point(697, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(236, 586);
+            this.groupBox2.Size = new System.Drawing.Size(236, 480);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtri";
@@ -161,8 +168,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 586);
+            this.ClientSize = new System.Drawing.Size(933, 480);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Iskalnik gradiv";
             this.panel1.ResumeLayout(false);
