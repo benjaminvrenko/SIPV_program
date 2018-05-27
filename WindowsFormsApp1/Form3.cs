@@ -287,7 +287,7 @@ namespace WindowsFormsApp1
         {
             if (e.IsSelected)
             {
-                if (skupineListView.SelectedItems.Count > 0)
+                if (programiListView.SelectedItems.Count > 0)
                 {
                     string urlZaProgram = "http://www.sicris.si/Common/rest.aspx?sessionID=1234CRIS12002B01B01A03IZUMBFICDOSKJHS588Nn44131&fields=&country=SI_JSON&entity=prg&methodCall=id=" + idProgramov[programiListView.Items.IndexOf(programiListView.SelectedItems[0])] + "%20and%20lang=slv";
 
@@ -301,7 +301,7 @@ namespace WindowsFormsApp1
         {
             if (e.IsSelected)
             {
-                if (projektiListView.SelectedItems.Count > 0)
+                if (skupineListView.SelectedItems.Count > 0)
                 {
                     string urlZaSkupine = "http://www.sicris.si/Common/rest.aspx?sessionID=1234CRIS12002B01B01A03IZUMBFICDOSKJHS588Nn44131&fields=&country=SI_JSON&entity=grp&methodCall=id=" + idSkupin[skupineListView.Items.IndexOf(skupineListView.SelectedItems[0])] + "%20and%20lang=slv";
 
