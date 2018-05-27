@@ -38,12 +38,17 @@
             this.letoHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.viriHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CobissSearchtextbox = new System.Windows.Forms.TextBox();
+            this.CobissButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.stRezultatovCBox = new System.Windows.Forms.ComboBox();
             this.naslovgradivaBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.CobissButton = new System.Windows.Forms.Button();
-            this.CobissSearchtextbox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -115,6 +120,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.CobissSearchtextbox);
             this.groupBox2.Controls.Add(this.CobissButton);
             this.groupBox2.Controls.Add(this.label2);
@@ -130,10 +140,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtri";
             // 
+            // CobissSearchtextbox
+            // 
+            this.CobissSearchtextbox.Location = new System.Drawing.Point(9, 191);
+            this.CobissSearchtextbox.Name = "CobissSearchtextbox";
+            this.CobissSearchtextbox.Size = new System.Drawing.Size(215, 22);
+            this.CobissSearchtextbox.TabIndex = 30;
+            // 
+            // CobissButton
+            // 
+            this.CobissButton.Location = new System.Drawing.Point(149, 389);
+            this.CobissButton.Name = "CobissButton";
+            this.CobissButton.Size = new System.Drawing.Size(75, 23);
+            this.CobissButton.TabIndex = 29;
+            this.CobissButton.Text = "Isci";
+            this.CobissButton.UseVisualStyleBackColor = true;
+            this.CobissButton.Click += new System.EventHandler(this.CobissButton_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 82);
+            this.label2.Location = new System.Drawing.Point(4, 418);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 16);
             this.label2.TabIndex = 28;
@@ -147,7 +174,7 @@
             "25",
             "50",
             "100"});
-            this.stRezultatovCBox.Location = new System.Drawing.Point(157, 79);
+            this.stRezultatovCBox.Location = new System.Drawing.Point(160, 418);
             this.stRezultatovCBox.Name = "stRezultatovCBox";
             this.stRezultatovCBox.Size = new System.Drawing.Size(70, 24);
             this.stRezultatovCBox.TabIndex = 27;
@@ -169,22 +196,46 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "Po ključni besedi";
             // 
-            // CobissButton
+            // label3
             // 
-            this.CobissButton.Location = new System.Drawing.Point(152, 219);
-            this.CobissButton.Name = "CobissButton";
-            this.CobissButton.Size = new System.Drawing.Size(75, 23);
-            this.CobissButton.TabIndex = 29;
-            this.CobissButton.Text = "Isci";
-            this.CobissButton.UseVisualStyleBackColor = true;
-            this.CobissButton.Click += new System.EventHandler(this.CobissButton_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 158);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(155, 16);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Iskanje po ključni besedi";
             // 
-            // CobissSearchtextbox
+            // textBox1
             // 
-            this.CobissSearchtextbox.Location = new System.Drawing.Point(9, 191);
-            this.CobissSearchtextbox.Name = "CobissSearchtextbox";
-            this.CobissSearchtextbox.Size = new System.Drawing.Size(215, 22);
-            this.CobissSearchtextbox.TabIndex = 30;
+            this.textBox1.Location = new System.Drawing.Point(12, 271);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(215, 22);
+            this.textBox1.TabIndex = 32;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 241);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(113, 16);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Iskanje po avtorju";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(9, 341);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(212, 22);
+            this.textBox2.TabIndex = 34;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 313);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(120, 16);
+            this.label6.TabIndex = 36;
+            this.label6.Text = "Iskanje po naslovu";
             // 
             // Form2
             // 
@@ -220,5 +271,10 @@
         private System.Windows.Forms.ComboBox stRezultatovCBox;
         private System.Windows.Forms.Button CobissButton;
         private System.Windows.Forms.TextBox CobissSearchtextbox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

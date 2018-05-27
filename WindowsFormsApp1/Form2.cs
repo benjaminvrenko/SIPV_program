@@ -8,17 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 
 namespace WindowsFormsApp1
 {
+
+   
+
     public partial class Form2 : Form
     {
         string evidencnaSt = null;
         string Ime = null;
         string Priimek = null;
         List<List<string>> tmpseznam = new List<List<string>>();
-
 
 
         public Form2(string ID, string ime,string priimek)
@@ -73,7 +76,7 @@ namespace WindowsFormsApp1
             celotnaHTMLvsebina = client.DownloadString(cobissURL);
 
             string podatkiOdelu;
-            List<string> IDCobiss = new List<string>();
+            List<string> IDCobiss = new List<string>();                                //seznam cobiss IDjev
             List<string> seznamKnjig = new List<string>();
             MatchCollection IDCOBISSMatch = Regex.Matches(celotnaHTMLvsebina, @"data-cobissId=""(.*)?""");
             foreach(Match zadetek in IDCOBISSMatch)
@@ -138,7 +141,7 @@ namespace WindowsFormsApp1
 
 
         }
-
+        
         private void CobissButton_Click(object sender, EventArgs e)
         {
             cobissListView.Items.Clear();
@@ -219,8 +222,8 @@ namespace WindowsFormsApp1
 
         private void naslovgradivaBox_TextChanged(object sender, EventArgs e)
         {
-            if (naslovgradivaBox.Text == "")
-            {
+        //    if (naslovgradivaBox.Text == "")
+        //    {
                 cobissListView.Items.Clear();
                 for (int y = 0; y < tmpseznam.Count; y++)
                 {
@@ -232,28 +235,35 @@ namespace WindowsFormsApp1
                     cobissListView.Items.Add(knjiga);
                 }
                // cobissListView = tmpview;
-            }
+           // }
            
             int index = 0;
-            foreach (ListViewItem item in cobissListView.Items)
+            for(int x=0; x<cobissListView.Items.Count;x++)
             {
-                foreach(ListViewItem.ListViewSubItem subitem in item.SubItems)
+                for(int y=0; y<cobissListView.Items[x].SubItems.Count;y++)
                 {
-                    bool vsebuje = subitem.Text.Contains(naslovgradivaBox.Text);
-                    if (vsebuje==true)
+
+
+                    bool vsebuje = cobissListView.Items[x].SubItems[y].Text.Contains(naslovgradivaBox.Text);
+                    if (vsebuje == true)
                     {
+                        index++;
                         break;
                     }
                     else
                     {
-                        index++;
-                        if(item.SubItems.Count==index)
+                        if (y == 4)
                         {
-                            item.Remove();
+                            cobissListView.Items[index].Remove();
+                            index = 0;
                         }
+                                                                      
                     }
                 }
             }
         }
+        
+
+
     }
 }
