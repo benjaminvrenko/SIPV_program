@@ -73,7 +73,13 @@ namespace WindowsFormsApp1
             celotnaHTMLvsebina = client.DownloadString(cobissURL);
 
             string podatkiOdelu;
+            List<string> IDCobiss = new List<string>();
             List<string> seznamKnjig = new List<string>();
+            MatchCollection IDCOBISSMatch = Regex.Matches(celotnaHTMLvsebina, @"data-cobissId=""(.*)?""");
+            foreach(Match zadetek in IDCOBISSMatch)
+            {
+                IDCobiss.Add(zadetek.Value);
+            }
             MatchCollection zadetki = Regex.Matches(celotnaHTMLvsebina, @"title\svalue"">[\W\s\d\D]*?e-dostop");
             foreach(Match zadetek in zadetki)
             {
