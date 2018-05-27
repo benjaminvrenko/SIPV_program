@@ -144,9 +144,38 @@ namespace WindowsFormsApp1
         
         private void CobissButton_Click(object sender, EventArgs e)
         {
+            /////// ZA SEARCH
+            string keyword;
+            string author;
+            string title;
+            ////////
             cobissListView.Items.Clear();
             int stRezultatovZaPrikaz = Convert.ToInt32(stRezultatovCBox.SelectedItem);
-            string cobissURL = "https://plus.cobiss.si/opac7/bib/search?q=" + CobissSearchtextbox.Text + "&db=cobib&mat=allmaterials&max=" + stRezultatovZaPrikaz;
+            if(CobissSearchtextbox.Text=="")
+            {
+                keyword = "";
+            }
+            else
+            {
+                keyword = "=" + CobissSearchtextbox.Text;
+            }
+            if(authorBox.Text=="")
+            {
+                author = "";
+            }
+            else
+            {
+                author = "=" + authorBox.Text;
+            }
+            if (naslovBox.Text == "")
+            {
+                title = "";
+            }
+            else
+            {
+                title = "=" + naslovBox.Text;
+            }
+            string cobissURL = "https://plus.cobiss.si/opac7/bib/search/advanced?kw" + keyword + "&ax" + author + "&ti" +title+ "&db=cobib&mat=allmaterials&max=" + stRezultatovZaPrikaz;
 
             string celotnaHTMLvsebina = null;
 
@@ -220,10 +249,14 @@ namespace WindowsFormsApp1
 
         }
 
+        /// <summary>
+        /// filtriranje najdenih knjig, narest sm mogu tmp list v katerega se shranijo svi podatki o knjigah ki jih najdemo, da pol lahko pred vsakim comparanjem comparamo vse zadetke
+        /// </summary>
+       
+
         private void naslovgradivaBox_TextChanged(object sender, EventArgs e)
         {
-        //    if (naslovgradivaBox.Text == "")
-        //    {
+       
                 cobissListView.Items.Clear();
                 for (int y = 0; y < tmpseznam.Count; y++)
                 {
@@ -234,8 +267,7 @@ namespace WindowsFormsApp1
                     }
                     cobissListView.Items.Add(knjiga);
                 }
-               // cobissListView = tmpview;
-           // }
+              
            
             
             foreach (ListViewItem item in cobissListView.Items)

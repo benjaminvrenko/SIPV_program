@@ -38,17 +38,17 @@
             this.letoHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.viriHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.naslovBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.authorBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.CobissSearchtextbox = new System.Windows.Forms.TextBox();
             this.CobissButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.stRezultatovCBox = new System.Windows.Forms.ComboBox();
             this.naslovgradivaBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -121,9 +121,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.naslovBox);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.authorBox);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.CobissSearchtextbox);
             this.groupBox2.Controls.Add(this.CobissButton);
@@ -139,6 +139,47 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtri";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 313);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(120, 16);
+            this.label6.TabIndex = 36;
+            this.label6.Text = "Iskanje po naslovu";
+            // 
+            // naslovBox
+            // 
+            this.naslovBox.Location = new System.Drawing.Point(9, 341);
+            this.naslovBox.Name = "naslovBox";
+            this.naslovBox.Size = new System.Drawing.Size(212, 22);
+            this.naslovBox.TabIndex = 34;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 241);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(113, 16);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Iskanje po avtorju";
+            // 
+            // authorBox
+            // 
+            this.authorBox.Location = new System.Drawing.Point(12, 271);
+            this.authorBox.Name = "authorBox";
+            this.authorBox.Size = new System.Drawing.Size(215, 22);
+            this.authorBox.TabIndex = 32;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 158);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(155, 16);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Iskanje po ključni besedi";
             // 
             // CobissSearchtextbox
             // 
@@ -196,47 +237,6 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "Po ključni besedi";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 158);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(155, 16);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Iskanje po ključni besedi";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(12, 271);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(215, 22);
-            this.textBox1.TabIndex = 32;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 241);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 16);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Iskanje po avtorju";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(9, 341);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(212, 22);
-            this.textBox2.TabIndex = 34;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 313);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 16);
-            this.label6.TabIndex = 36;
-            this.label6.Text = "Iskanje po naslovu";
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,9 +272,9 @@
         private System.Windows.Forms.Button CobissButton;
         private System.Windows.Forms.TextBox CobissSearchtextbox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox authorBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox naslovBox;
     }
 }
