@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
         string Ime = null;
         string Priimek = null;
         List<List<string>> tmpseznam = new List<List<string>>();
-
+        List<string> IDCobiss = new List<string>();
 
         public Form2(string ID, string ime,string priimek)
         {
@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
             celotnaHTMLvsebina = client.DownloadString(cobissURL);
 
             string podatkiOdelu;
-            List<string> IDCobiss = new List<string>();                                //seznam cobiss IDjev
+                              //seznam cobiss IDjev
             List<string> seznamKnjig = new List<string>();
             MatchCollection IDCOBISSMatch = Regex.Matches(celotnaHTMLvsebina, @"data-cobissId=""(.*)?""");
             foreach(Match zadetek in IDCOBISSMatch)
@@ -260,8 +260,15 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        
+
+        private void cobissListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                System.Diagnostics.Process.Start("http://google.com");
 
 
+            }
+        }
     }
 }
