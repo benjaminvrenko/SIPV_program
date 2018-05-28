@@ -43,10 +43,12 @@ namespace WindowsFormsApp1
         public Form3(string ID)
         {
             InitializeComponent();
+            this.Select();
             projektiListView.View = View.Details;
             programiListView.View = View.Details;
             skupineListView.View = View.Details;
-
+            opisProgram.SelectionAlignment = HorizontalAlignment.Left;
+            opisProjekt.SelectionAlignment = HorizontalAlignment.Left;
             vsiRaziskListBox.ScrollAlwaysVisible = true;
 
             projektiListView.FullRowSelect = true;
@@ -90,6 +92,7 @@ namespace WindowsFormsApp1
         {
             toolStripStatusLabel1.Text = "Branje končano! Polnjenje seznamov...";
             napolniListView();
+            (this.Owner as Form1).fakulteteListView.Enabled = true;
         }
 
         private void napolniListView()
@@ -289,11 +292,13 @@ namespace WindowsFormsApp1
                         Match opisZadetek = Regex.Match(projektDataRaw, @"ABSTRACT"":""(.*?)""");
                         OpisProjekta = opisZadetek.Groups[1].Value;
                         OpisProjekta = Regex.Unescape(OpisProjekta);
+                        opisProjekt.Text = OpisProjekta;
                     }
                     else
                     {
-                        //eeem ja mmm ni kaj ne
+                        opisProjekt.Text = null;
                     }
+
                 }
             }
         }
@@ -313,12 +318,12 @@ namespace WindowsFormsApp1
                         Match opisZadetek = Regex.Match(programiDataRaw, @"ABSTRACT"":""(.*?)""");
                         OpisPrograma = opisZadetek.Groups[1].Value;
                         OpisPrograma = Regex.Unescape(OpisPrograma);
+                        opisProgram.Text = OpisPrograma;
                     }
                     else
                     {
-                        //eeem ja mmm ni kaj ne
+                        opisProgram.Clear();
                     }
-
                 }
             }
         }
@@ -342,6 +347,14 @@ namespace WindowsFormsApp1
                     foreach(Match zadete in zaposleniMatch)
                     {
                         ImeinPriimekRaziskovalcev.Add(zadete.Groups[1] + " " + zadete.Groups[2]);
+                    }
+
+                    if (ImeinPriimekRaziskovalcev != null)
+                    {
+                        foreach(string raziskovalec in ImeinPriimekRaziskovalcev)
+                        {
+                            claniListView.Items.Add(raziskovalec);
+                        }
                     }
                 }
             }

@@ -223,6 +223,7 @@
             // 
             // projektiListView
             // 
+            this.projektiListView.BackColor = System.Drawing.SystemColors.Window;
             this.projektiListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.imeProj});
             this.projektiListView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -232,12 +233,13 @@
             this.projektiListView.Size = new System.Drawing.Size(484, 114);
             this.projektiListView.TabIndex = 0;
             this.projektiListView.UseCompatibleStateImageBehavior = false;
+            this.projektiListView.View = System.Windows.Forms.View.Details;
             this.projektiListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.projektListView_ItemSelectionChanged);
             // 
             // imeProj
             // 
             this.imeProj.Text = "Naziv projekta";
-            this.imeProj.Width = 440;
+            this.imeProj.Width = 474;
             // 
             // groupBox5
             // 
@@ -254,6 +256,7 @@
             // 
             // opisProjekt
             // 
+            this.opisProjekt.BackColor = System.Drawing.SystemColors.Window;
             this.opisProjekt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.opisProjekt.Location = new System.Drawing.Point(3, 18);
             this.opisProjekt.Name = "opisProjekt";
@@ -302,12 +305,13 @@
             this.programiListView.Size = new System.Drawing.Size(484, 105);
             this.programiListView.TabIndex = 0;
             this.programiListView.UseCompatibleStateImageBehavior = false;
+            this.programiListView.View = System.Windows.Forms.View.Details;
             this.programiListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.programiListView_ItemSelectionChanged);
             // 
             // imeProg
             // 
             this.imeProg.Text = "Naziv programa";
-            this.imeProg.Width = 440;
+            this.imeProg.Width = 470;
             // 
             // groupBox9
             // 
@@ -324,6 +328,7 @@
             // 
             // opisProgram
             // 
+            this.opisProgram.BackColor = System.Drawing.SystemColors.Window;
             this.opisProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.opisProgram.Location = new System.Drawing.Point(3, 18);
             this.opisProgram.Name = "opisProgram";
@@ -390,12 +395,13 @@
             this.skupineListView.Size = new System.Drawing.Size(484, 102);
             this.skupineListView.TabIndex = 0;
             this.skupineListView.UseCompatibleStateImageBehavior = false;
+            this.skupineListView.View = System.Windows.Forms.View.Details;
             this.skupineListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.skupineListView_ItemSelectionChanged);
             // 
             // imeSkupine
             // 
             this.imeSkupine.Text = "Ime skupine";
-            this.imeSkupine.Width = 440;
+            this.imeSkupine.Width = 471;
             // 
             // groupBox7
             // 
@@ -415,16 +421,18 @@
             this.claniListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.claniHeader});
             this.claniListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.claniListView.FullRowSelect = true;
             this.claniListView.Location = new System.Drawing.Point(3, 18);
             this.claniListView.Name = "claniListView";
             this.claniListView.Size = new System.Drawing.Size(481, 102);
             this.claniListView.TabIndex = 0;
             this.claniListView.UseCompatibleStateImageBehavior = false;
+            this.claniListView.View = System.Windows.Forms.View.Details;
             // 
             // claniHeader
             // 
             this.claniHeader.Text = "Ime/priimek člana";
-            this.claniHeader.Width = 420;
+            this.claniHeader.Width = 468;
             // 
             // groupBox3
             // 

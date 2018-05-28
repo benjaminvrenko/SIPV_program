@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
         private int stRezultatovZaPrikaz = 0;
         private string raziskovalecSearch = null;
 
+
         private List<ListViewItem> seznamItemovSicriss = new List<ListViewItem>();
         private List<string> seznamIDfakultet = new List<string>();
         System.Net.WebClient client = new System.Net.WebClient();
@@ -29,7 +30,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             sicrisWorker.WorkerReportsProgress = true;
-
             client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleted);
             client.DownloadProgressChanged += new System.Net.DownloadProgressChangedEventHandler(DownloadProgressChanged);
 
@@ -266,7 +266,9 @@ namespace WindowsFormsApp1
                 {
                     string ID = seznamIDfakultet[fakulteteListView.Items.IndexOf(fakulteteListView.SelectedItems[0])];
                     Form3 prikazFakulteteForm = new Form3(ID);
+                    prikazFakulteteForm.Owner = this;
                     prikazFakulteteForm.Show(this);
+                    fakulteteListView.Enabled = false;
                 }
 
             }

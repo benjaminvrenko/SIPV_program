@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.progressBarDownload = new System.Windows.Forms.ToolStripProgressBar();
             this.progressBarBranje = new System.Windows.Forms.ToolStripProgressBar();
@@ -40,6 +38,7 @@
             this.fakulteteListView = new System.Windows.Forms.ListView();
             this.fakulteteHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.iskanjeGroupBox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.raziskovalciBox = new System.Windows.Forms.TextBox();
             this.stRezultatovCBox = new System.Windows.Forms.ComboBox();
@@ -58,8 +57,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.sicrisWorker = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.toolStrip1.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.fakulteteGroupBox.SuspendLayout();
             this.iskanjeGroupBox.SuspendLayout();
@@ -71,27 +68,6 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1453, 26);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(78, 23);
-            this.toolStripDropDownButton1.Text = "Datoteka";
-            this.toolStripDropDownButton1.ToolTipText = "Datoteka";
             // 
             // statusBar
             // 
@@ -129,12 +105,13 @@
             // 
             // fakulteteGroupBox
             // 
+            this.fakulteteGroupBox.BackColor = System.Drawing.Color.Transparent;
             this.fakulteteGroupBox.Controls.Add(this.fakulteteListView);
             this.fakulteteGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fakulteteGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.fakulteteGroupBox.Location = new System.Drawing.Point(0, 0);
             this.fakulteteGroupBox.Name = "fakulteteGroupBox";
-            this.fakulteteGroupBox.Size = new System.Drawing.Size(455, 583);
+            this.fakulteteGroupBox.Size = new System.Drawing.Size(377, 609);
             this.fakulteteGroupBox.TabIndex = 5;
             this.fakulteteGroupBox.TabStop = false;
             this.fakulteteGroupBox.Text = "Seznam fakultet";
@@ -147,9 +124,10 @@
             this.fakulteteListView.FullRowSelect = true;
             this.fakulteteListView.Location = new System.Drawing.Point(3, 19);
             this.fakulteteListView.Name = "fakulteteListView";
-            this.fakulteteListView.Size = new System.Drawing.Size(449, 561);
+            this.fakulteteListView.Size = new System.Drawing.Size(371, 587);
             this.fakulteteListView.TabIndex = 0;
             this.fakulteteListView.UseCompatibleStateImageBehavior = false;
+            this.fakulteteListView.View = System.Windows.Forms.View.Details;
             this.fakulteteListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.fakulteteListView_ItemSelectionChanged);
             // 
             // fakulteteHeader
@@ -159,6 +137,7 @@
             // 
             // iskanjeGroupBox
             // 
+            this.iskanjeGroupBox.BackColor = System.Drawing.Color.Transparent;
             this.iskanjeGroupBox.Controls.Add(this.button1);
             this.iskanjeGroupBox.Controls.Add(this.label5);
             this.iskanjeGroupBox.Controls.Add(this.raziskovalciBox);
@@ -169,10 +148,20 @@
             this.iskanjeGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.iskanjeGroupBox.Location = new System.Drawing.Point(0, 0);
             this.iskanjeGroupBox.Name = "iskanjeGroupBox";
-            this.iskanjeGroupBox.Size = new System.Drawing.Size(260, 583);
+            this.iskanjeGroupBox.Size = new System.Drawing.Size(260, 609);
             this.iskanjeGroupBox.TabIndex = 4;
             this.iskanjeGroupBox.TabStop = false;
             this.iskanjeGroupBox.Text = "Iskanje";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 189);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(226, 37);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Iskalnik po Cobiss-u";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -227,12 +216,13 @@
             // 
             // rezultatiGroupBox
             // 
+            this.rezultatiGroupBox.BackColor = System.Drawing.Color.Transparent;
             this.rezultatiGroupBox.Controls.Add(this.rezultatiListView);
             this.rezultatiGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rezultatiGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.rezultatiGroupBox.Location = new System.Drawing.Point(0, 0);
             this.rezultatiGroupBox.Name = "rezultatiGroupBox";
-            this.rezultatiGroupBox.Size = new System.Drawing.Size(734, 583);
+            this.rezultatiGroupBox.Size = new System.Drawing.Size(812, 609);
             this.rezultatiGroupBox.TabIndex = 3;
             this.rezultatiGroupBox.TabStop = false;
             this.rezultatiGroupBox.Text = "Rezultati";
@@ -253,9 +243,10 @@
             this.rezultatiListView.Location = new System.Drawing.Point(3, 19);
             this.rezultatiListView.MultiSelect = false;
             this.rezultatiListView.Name = "rezultatiListView";
-            this.rezultatiListView.Size = new System.Drawing.Size(728, 561);
+            this.rezultatiListView.Size = new System.Drawing.Size(806, 587);
             this.rezultatiListView.TabIndex = 0;
             this.rezultatiListView.UseCompatibleStateImageBehavior = false;
+            this.rezultatiListView.View = System.Windows.Forms.View.Details;
             this.rezultatiListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.rezultatiListView_ItemSelectionChanged);
             // 
             // evidencnaHeader
@@ -293,7 +284,7 @@
             // Email
             // 
             this.Email.Text = "Email";
-            this.Email.Width = 130;
+            this.Email.Width = 222;
             // 
             // desniSplitContainer
             // 
@@ -308,26 +299,28 @@
             // desniSplitContainer.Panel2
             // 
             this.desniSplitContainer.Panel2.Controls.Add(this.fakulteteGroupBox);
-            this.desniSplitContainer.Size = new System.Drawing.Size(1193, 583);
-            this.desniSplitContainer.SplitterDistance = 734;
+            this.desniSplitContainer.Size = new System.Drawing.Size(1193, 609);
+            this.desniSplitContainer.SplitterDistance = 812;
             this.desniSplitContainer.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.iskanjeGroupBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 26);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(260, 583);
+            this.panel1.Size = new System.Drawing.Size(260, 609);
             this.panel1.TabIndex = 5;
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.desniSplitContainer);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(260, 26);
+            this.panel2.Location = new System.Drawing.Point(260, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1193, 583);
+            this.panel2.Size = new System.Drawing.Size(1193, 609);
             this.panel2.TabIndex = 6;
             // 
             // sicrisWorker
@@ -336,31 +329,19 @@
             this.sicrisWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.sicrissWorker_ProgressChanged);
             this.sicrisWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.sicrissWorker_RunWorkerCompleted);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 189);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(226, 37);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Iskalnik po Cobiss-u";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1453, 631);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusBar);
-            this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Iskalnik baze raziskovalcev";
+            this.Text = "SCScraper";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.fakulteteGroupBox.ResumeLayout(false);
@@ -379,12 +360,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.GroupBox fakulteteGroupBox;
-        private System.Windows.Forms.ListView fakulteteListView;
+        public System.Windows.Forms.ListView fakulteteListView;
         private System.Windows.Forms.ColumnHeader fakulteteHeader;
         private System.Windows.Forms.GroupBox iskanjeGroupBox;
         private System.Windows.Forms.Label label5;
